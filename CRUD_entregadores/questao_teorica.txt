@@ -1,0 +1,13 @@
+Ao projetar o aplicativo de gerenciamento de entregadores e entregas utilizando React
+Native com Firebase, quais desafios devem ser considerados ao implementar a operação
+de exclusão de um entregador que possui entregas vinculadas a ele?
+
+R: O principal desafio é ter em mente que o Google Firestore não trata automaticamente
+a exclusão em cascata, como, por exemplo, projetos em Laravel, onde a relação entre 
+elementes era bem definida por comandos explícitos, como ONE TO MANY, e recursos como
+ON DELETE CASCADE, onde ao apagar o registro referenciado por entidades com chave 
+estrangeira, todas essas entidades seriam automaticamente excluídas do banco, a fim
+de impedir inconsistências, com entidades "orfãs".
+Desta forma, foi crucial pensar na lógica da aplicação e programar manualmente a 
+função de exclusão em cascata, onde ao excluir um entregador, todas as entregas 
+atribuídas a ele serão excluídas juntamente a ele.
